@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::delete('/category/{id}/delete','CategoryController@deletePermanent')->name('category.delete-permanent');
+Route::get('/category/trash','CategoryController@trash')->name('category.trash');
+Route::get('/category/{id}/restore','CategoryController@restore')->name('category.restore');
+Route::resource('category', 'CategoryController');
