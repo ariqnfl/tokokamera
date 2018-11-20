@@ -22,4 +22,7 @@ Route::delete('/category/{id}/delete','CategoryController@deletePermanent')->nam
 Route::get('/category/trash','CategoryController@trash')->name('category.trash');
 Route::get('/category/{id}/restore','CategoryController@restore')->name('category.restore');
 Route::resource('category', 'CategoryController');
+Route::delete('/brand/{id}/delete','BrandController@deletePermanent')->name('brand.delete-permanent');
+Route::get('/brand/trash','BrandController@trash')->name('brand.trash');
+Route::get('/brand/{id}/restore','BrandController@restore')->name('brand.restore');
 Route::resource('brand','BrandController');
