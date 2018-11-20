@@ -26,3 +26,4 @@ Route::delete('/brand/{id}/delete','BrandController@deletePermanent')->name('bra
 Route::get('/brand/trash','BrandController@trash')->name('brand.trash');
 Route::get('/brand/{id}/restore','BrandController@restore')->name('brand.restore');
 Route::resource('brand','BrandController');
+Route::resource('user','UserController');
