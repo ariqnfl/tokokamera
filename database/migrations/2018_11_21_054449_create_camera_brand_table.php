@@ -13,7 +13,7 @@ class CreateCameraBrandTable extends Migration
      */
     public function up()
     {
-        Schema::create('camera_brand', function (Blueprint $table) {
+        Schema::create('brand_camera', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('camera_id')->nullable();
             $table->unsignedInteger('brand_id')->nullable();

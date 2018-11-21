@@ -14,10 +14,13 @@
                 <form class="bg-white p-3" action="{{route('category.update', ['id'=> $category->id])}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <label for="">Category Name</label>
-                    <input type="text" class="form-control" value="{{$category->name}}" name="name">
-                    <br>
-                    <input type="submit" class="btn btn-primary" value="Update">
+                    <div class="form-group">
+                        <label for="">Category Name</label>
+                        <input type="text" class="form-control" value="{{$category->name}}" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
                 </form>
             </div>
         </div>

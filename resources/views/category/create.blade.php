@@ -13,10 +13,13 @@
                 @endif
                 <form class="bg-white p-3" action="{{route('category.store')}}" method="POST">
                     @csrf
-                    <label for="">Category Name</label>
-                    <input type="text" class="form-control" name="name">
-                    <br>
-                    <input type="submit" class="btn btn-primary" value="Save">
+                    <div class="form-group">
+                        <label for="">Category Name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                    </div>
                 </form>
             </div>
         </div>

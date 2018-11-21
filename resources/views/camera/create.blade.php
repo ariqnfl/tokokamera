@@ -26,23 +26,44 @@
                     </div>
                     <div class="form-group">
                         <label for="">Camera Price</label>
-                        <input type="number" name="price" class="form-control">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            <input type="number" name="price" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Camera Stock</label>
-                        <input type="number" name="stock" class="form-control">
+                        <div class="input-group">
+                            <input type="number" name="stock" class="form-control">
+                            <div class="input-group-append">
+                                <span class="input-group-text">pcs</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="categories">Categories</label>
-                        <select name="categories[]" id="categories" class="custom-select" multiple></select>
+                        <select name="categories[]" multiple id="categories" class="custom-select"></select>
                     </div>
                     <div class="form-group">
                         <label for="">Camera Brands</label>
-                        <select name="brands[]" id="brands" class="form-control"></select>
+                        <select name="brands[]" id="brands" class="form-control">
+                            <option selected>Choose...</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Camera Picture</label>
-                        <input type="file" class="form-control" name="photo">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02"
+                                       aria-describedby="inputGroupFileAddon02">Choose file</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Save">

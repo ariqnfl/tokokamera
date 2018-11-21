@@ -15,19 +15,28 @@
                       action="{{route('brand.update', ['id'=> $brand->id])}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <label for="">Brand Name</label>
-                    <input type="text" class="form-control" value="{{$brand->name}}" name="name">
-                    <br><br>
-                    @if($brand->photo)
-                        <span>Current Logo</span>
-                        <br><br>
-                        <img src="{{asset('storage/'.$brand->photo)}}" width="120px">
-                        <br><br>
-                    @endif
-                    <input type="file" class="form-control" name="photo">
-                    <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
-                    <br><br>
-                    <input type="submit" class="btn btn-primary" value="Update">
+                    <div class="form-group">
+                        <label for="">Brand Name</label>
+                        <input type="text" class="form-control" value="{{$brand->name}}" name="name">
+                    </div>
+                    <div class="form-group">
+                        @if($brand->photo)
+                            <span>Current Logo</span>
+                            <div class="form-group">
+                                <img src="{{asset('storage/'.$brand->photo)}}" width="120px">
+                            </div>
+
+                        @endif
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile02" name="photo">
+                            <label class="custom-file-label" for="inputGroupFile02"
+                                   aria-describedby="inputGroupFileAddon02">Choose file</label>
+                        </div>
+                        <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
                 </form>
             </div>
         </div>

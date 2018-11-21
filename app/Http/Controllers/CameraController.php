@@ -52,6 +52,7 @@ class CameraController extends Controller
         }
         $cameras = Camera::create($datas);
         $cameras->categories()->attach($request->get('categories'));
+        $cameras->brands()->attach($request->get('brands'));
         return redirect(route('camera.create'))->with('status','mantap');
     }
 
@@ -63,7 +64,8 @@ class CameraController extends Controller
      */
     public function show($id)
     {
-        //
+        $camera = Camera::findOrFail($id);
+        return view('camera.show',compact('camera'));
     }
 
     /**
