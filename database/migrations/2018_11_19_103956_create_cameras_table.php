@@ -15,16 +15,14 @@ class CreateCamerasTable extends Migration
     {
         Schema::create('cameras', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('brand_id');
             $table->string('name');
+            $table->integer('stock')->default(0);
             $table->integer('price');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('slug');
             $table->text('desc');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->softDeletes();
         });
     }
 

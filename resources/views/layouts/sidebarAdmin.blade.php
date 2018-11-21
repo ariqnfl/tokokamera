@@ -4,7 +4,7 @@
             <a class="nav-link" href="{{route('user.index')}}">Users</a>
             <a class="nav-link" href="{{route('category.index')}}">Category</a>
             <a class="nav-link" href="{{route('brand.index')}}">Brand</a>
-            <a class="nav-link" href="#">Camera</a>
+            <a class="nav-link" href="{{route('camera.index')}}">Camera</a>
             <a class="nav-link" href="">Orders</a>
             <a class="nav-link" href="#">History</a>
         </nav>

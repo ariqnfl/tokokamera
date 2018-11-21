@@ -9,7 +9,12 @@ class Category extends Model
 {
     use SoftDeletes;
 
+    public function cameras()
+    {
+        return $this->belongsToMany('App\Camera');
+    }
+
     protected $fillable = [
-      'name','created_by'
+        'name', 'created_by'
     ];
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
@@ -20,7 +19,7 @@ class BrandController extends Controller
         $brands = Brand::paginate(5);
         $keyword = $request->get('name');
         if ($keyword) {
-            $categories = Brand::where("name", "LIKE", "%$keyword%")->paginate(5);
+            $brands = Brand::where("name", "LIKE", "%$keyword%")->paginate(5);
         }
         return view('brand.index', compact('brands'));
     }
@@ -110,9 +109,13 @@ class BrandController extends Controller
         return redirect()->route('brand.index')->with('status', 'Brand Successfully deleted');
     }
 
-    public function trash()
+    public function trash(Request $request)
     {
         $brands = Brand::onlyTrashed()->paginate(5);
+        $keyword = $request->get('name');
+        if ($keyword){
+            $brands = Brand::where('name',"LIKE","%$keyword","AND",'deleted_at',"IS","NOT","NULL")->paginate(5);
+        }
         return view('brand.trash', compact('brands'));
     }
 
@@ -141,7 +144,7 @@ class BrandController extends Controller
     public function ajaxSearch(Request $request)
     {
         $keyword = $request->get('q');
-        $brand = Brand::where('name','LIKE',"%$keyword%")->get();
+        $brand = Brand::where('name', 'LIKE', "%$keyword%")->get();
         return $brand;
     }
 }

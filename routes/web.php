@@ -27,3 +27,7 @@ Route::get('/brand/trash','BrandController@trash')->name('brand.trash');
 Route::get('/brand/{id}/restore','BrandController@restore')->name('brand.restore');
 Route::resource('brand','BrandController');
 Route::resource('user','UserController');
+Route::delete('/camera/{id}/delete','CameraController@deletePermanent')->name('camera.delete-permanent');
+Route::get('/camera/trash','CameraController@trash')->name('camera.trash');
+Route::get('/camera/{id}/restore','CameraController@restore')->name('camera.restore');
+Route::resource('camera','CameraController');
