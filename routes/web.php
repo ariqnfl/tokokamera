@@ -31,3 +31,5 @@ Route::delete('/camera/{id}/delete','CameraController@deletePermanent')->name('c
 Route::get('/camera/trash','CameraController@trash')->name('camera.trash');
 Route::get('/camera/{id}/restore','CameraController@restore')->name('camera.restore');
 Route::resource('camera','CameraController');
+Route::get('/ajax/categories/search','CategoryController@ajaxSearch')->name('ajax.search');
+Route::get('/ajax/brands/search','BrandController@ajaxSearch')->name('ajax-brand.search');

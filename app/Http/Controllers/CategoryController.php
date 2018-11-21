@@ -43,7 +43,7 @@ class CategoryController extends Controller
     {
         $datas = $request->all();
         $datas['created_by'] = Auth::user()->id;
-        Category::create($datas);
+        $categories = Category::create($datas);
         return redirect()->route('category.create')->with('status', 'Category Created');
     }
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Camera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class CameraController extends Controller
 {
@@ -29,7 +32,7 @@ class CameraController extends Controller
      */
     public function create()
     {
-        //
+        return view('camera.create');
     }
 
     /**
@@ -40,7 +43,16 @@ class CameraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datas = $request->all();
+        $datas['slug'] = $request->name;
+        $datas['created_by'] = Auth::user()->id;
+        if ($request->file('photo')) {
+            $file = Storage::disk('public')->put('cameras', $request->photo);
+            $datas['photo'] = $file;
+        }
+        $cameras = Camera::create($datas);
+        $cameras->categories()->attach($request->get('categories'));
+        return redirect(route('camera.create'))->with('status','mantap');
     }
 
     /**
