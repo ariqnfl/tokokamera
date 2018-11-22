@@ -34,3 +34,11 @@
         </div>
     </div>
 @endsection
+@section('footer-script')
+    <script>
+        $('#inputGroupFile02').on('change', function (e) {
+            var fileName = e.target.files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
+@endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\Camera;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,6 +24,26 @@ class BrandController extends Controller
             $brands = Brand::where("name", "LIKE", "%$keyword%")->paginate(5);
         }
         return view('brand.index', compact('brands'));
+    }
+
+    public function nampilinGambar()
+    {
+
+        $brands = Brand::take(6)->get();
+        $camera = Camera::take(5)->get();
+        return view('index', compact('brands', 'camera'));
+    }
+//
+//    public function categoryShow()
+//    {
+//        $categories = Category::all();
+//        return view('index',compact('categories'));
+//    }
+
+    public function showGambar($id)
+    {
+        $camera = Camera::findOrFail($id);
+        return view('item', compact('camera'));
     }
 
     /**
@@ -113,8 +135,8 @@ class BrandController extends Controller
     {
         $brands = Brand::onlyTrashed()->paginate(5);
         $keyword = $request->get('name');
-        if ($keyword){
-            $brands = Brand::where('name',"LIKE","%$keyword","AND",'deleted_at',"IS","NOT","NULL")->paginate(5);
+        if ($keyword) {
+            $brands = Brand::where('name', "LIKE", "%$keyword", "AND", 'deleted_at', "IS", "NOT", "NULL")->paginate(5);
         }
         return view('brand.trash', compact('brands'));
     }

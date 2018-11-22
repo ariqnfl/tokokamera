@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Camera Brands</label>
-                        <select name="brands[]" id="brands" class="form-control">
+                        <select name="brand_id" id="brands" class="form-control">
                             <option selected>Choose...</option>
                         </select>
                     </div>
@@ -59,7 +59,7 @@
                         <label for="">Camera Picture</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02" name="photo">
                                 <label class="custom-file-label" for="inputGroupFile02"
                                        aria-describedby="inputGroupFileAddon02">Choose file</label>
                             </div>
@@ -75,6 +75,12 @@
 @endsection
 @section('footer-script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $('#inputGroupFile02').on('change', function (e) {
+            var fileName = e.target.files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
     <script>
         $('#categories').select2({
             ajax: {

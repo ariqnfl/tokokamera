@@ -14,6 +14,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+    const ADMIN_TYPE = 'admin';
+    const DEFAULT_TYPE = 'user';
+    public function isAdmin(){
+        return $this->type == self::ADMIN_TYPE;
+    }
     public function orders()
     {
         return $this->hasMany('App\Order');

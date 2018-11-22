@@ -11,7 +11,7 @@ class Brand extends Model
 
     public function cameras()
     {
-        return $this->belongsToMany('App\Camera');
+        return $this->hasOne('App\Camera','brand_id','id');
     }
 
     protected $fillable = [

@@ -73,8 +73,10 @@
                                 <td>{{$camera->price}}</td>
                                 <td>{{$camera->stock}}</td>
                                 <td>
-                                    <a href="{{route('camera.edit', ['id'=> $camera->id])}}" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="{{route('camera.show', ['id'=> $camera->id])}}" class="btn btn-success btn-sm">Show</a>
+                                    <a href="{{route('camera.edit', ['id'=> $camera->id])}}"
+                                       class="btn btn-info btn-sm">Edit</a>
+                                    <a href="{{route('camera.show', ['id'=> $camera->id])}}"
+                                       class="btn btn-success btn-sm">Show</a>
                                     <form class="d-inline" action="{{route('brand.destroy',['id'=> $camera->id])}}"
                                           method="POST" onsubmit="return confirm('Move Category to trash?')">
                                         @csrf

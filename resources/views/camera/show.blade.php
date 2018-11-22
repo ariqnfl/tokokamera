@@ -33,9 +33,7 @@
                 </div>
                 <label for=""><b>Camera Brand</b></label>
                 <div class="form-group">
-                    @foreach($camera->brands as $brand)
-                        {{$brand->name}}
-                    @endforeach
+                    {{$camera->brands->name}}
                 </div>
             </div>
         </div>

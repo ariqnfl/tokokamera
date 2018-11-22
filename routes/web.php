@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+
 
 Auth::routes();
-
+Route::get('/','HomeController@indexUser')->name('homeUser');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::delete('/category/{id}/delete','CategoryController@deletePermanent')->name('category.delete-permanent');
 Route::get('/category/trash','CategoryController@trash')->name('category.trash');
@@ -33,3 +31,8 @@ Route::get('/camera/{id}/restore','CameraController@restore')->name('camera.rest
 Route::resource('camera','CameraController');
 Route::get('/ajax/categories/search','CategoryController@ajaxSearch')->name('ajax.search');
 Route::get('/ajax/brands/search','BrandController@ajaxSearch')->name('ajax-brand.search');
+Route::get('/','BrandController@nampilinGambar');
+Route::get('/{id}','BrandController@showGambar')->name('gambar');
+//Route::get('/','BrandController@categoryShow');
+Route::get('/admin','AdminController@admin')
+    ->middleware('is_admin')->name('admin');

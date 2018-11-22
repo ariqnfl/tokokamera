@@ -22,12 +22,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexUser(){
+        return view('index');
+    }
     public function index()
     {
-        if(Auth::user()->role=='admin')
-        {
-            return view('home');
-        }
+//        if(Auth::user()->role=='admin')
+//        {
+//            return view('home');
+//        }
         return view('home');
     }
 }

@@ -16,7 +16,7 @@ class Camera extends Model
 
     public function brands()
     {
-        return $this->belongsToMany('App\Brand');
+        return $this->belongsTo('App\Brand','brand_id','id');
     }
 
     public function orders()
@@ -25,7 +25,7 @@ class Camera extends Model
     }
 
     protected $fillable = [
-        'name','stock','price','slug','photo','desc','created_by'
+        'name','stock','price','slug','photo','desc','created_by','brand_id'
     ];
 
     public function setSlug($value)

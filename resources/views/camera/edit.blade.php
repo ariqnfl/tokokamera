@@ -1,8 +1,11 @@
-@extends('layouts.global')
-@section('title') Edit Book @endsection
+@extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-md-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <div class="card">
+        <div class="card-header">
+            Edit {{$camera->name}}
+        </div>
+        <div class="card-body">
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -33,48 +36,54 @@
                     </div>
                     <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
                 </div>
-                <label for="slug">Slug</label>
-                <input type="text" class="form-control" value="{{$book->slug}}" name="slug" placeholder="enter-a-slug">
-                <br>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control">
-                    {{$book->description}}
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" class="form-control">{{$camera->desc}}
                 </textarea>
-                <br>
-                <label for="categories">Categories</label>
-                <select multiple class="form-control" name="categories" id="categories"></select>
-                <br><br>
-                <label for="stock">Stock</label>
-                <br>
-                <input type="number" class="form-control" placeholder="Stock" id="stock" name="stock"
-                       value="{{$book->stock}}">
-                <br>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" class="form-control" placeholder="Author"
-                       value="{{$book->author}}">
-                <br>
-                <label for="publisher">Publisher</label>
-                <input class="form-control" type="text" placeholder="Publisher" name="publisher" id="publisher"
-                       value="{{$book->publisher}}">
-                <br>
-                <label for="price">Price</label>
-                <input class="form-control" type="number" placeholder="Price" name="price" id="price"
-                       value="{{$book->price}}">
-                <br>
-                <label for="status">Status</label>
-                <select name="status" id="status" class="form-control">
-                    <option {{$book->status == 'PUBLISH' ? 'selected' : ''}} value="PUBLISH">PUBLISH</option>
-                    <option {{$book->status == 'DRAFT' ? 'selected' : ''}} value="DRAFT"></option>
-                </select>
-                <br>
+                </div>
+                <div class="form-group">
+                    <label for="categories">Camera Categories</label>
+                    <select class="form-control" name="categories" id="categories" multiple></select>
+                </div>
+                <div class="form-group">
+                    <label for="brands">Camera Brand</label>
+                    <select class="form-control" name="brands" id="brands"></select>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <label for="">Camera Stock</label>
+                    <div class="input-group">
+                        <input type="number" name="stock" class="form-control" value="{{$camera->stock}}">
+                        <div class="input-group-append">
+                            <span class="input-group-text">pcs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Camera Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="number" name="price" class="form-control" value="{{$camera->price}}">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.00</span>
+                        </div>
+                    </div>
+                </div>
                 <button class="btn btn-primary" value="PUBLISH">Update</button>
             </form>
         </div>
     </div>
 @endsection
-@section('footer-scripts')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+@section('footer-script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $('#inputGroupFile02').on('change', function (e) {
+            var fileName = e.target.files[0].name;
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
     <script>
         $('#categories').select2({
             ajax: {
@@ -92,10 +101,33 @@
                 }
             }
         });
-        var categories = {!! $book->categories !!}
+        var categories = {!! $camera->categories !!}
         categories.forEach(function (category) {
             var option = new Option(category.name, category.id, true, true);
             $('#categories').append(option).trigger('change');
+        });
+    </script>
+    <script>
+        $('#brands').select2({
+            ajax: {
+                url: '{{ route('ajax-brand.search') }}',
+                processResults: function (data) {
+                    return {
+                        results: data.map(function (item) {
+                            console.log(item);
+                            return {
+                                id: item.id, text: item.name
+                            }
+
+                        })
+                    }
+                }
+            }
+        });
+        var brands = {!! $camera->brand_id !!}
+        brands.forEach(function (brand) {
+            var option = new Option(brand.name, brand.id, true, true);
+            $('#brands').append(option).trigger('change');
         });
     </script>
 @endsection

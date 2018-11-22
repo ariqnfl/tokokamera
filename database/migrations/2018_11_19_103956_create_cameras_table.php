@@ -19,6 +19,7 @@ class CreateCamerasTable extends Migration
             $table->integer('stock')->default(0);
             $table->integer('price');
             $table->string('photo')->nullable();
+            $table->unsignedInteger('brand_id');
             $table->string('slug');
             $table->text('desc');
             $table->integer('created_by');
@@ -26,6 +27,7 @@ class CreateCamerasTable extends Migration
             $table->integer('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

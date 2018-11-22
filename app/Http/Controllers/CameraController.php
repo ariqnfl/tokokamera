@@ -25,6 +25,7 @@ class CameraController extends Controller
         return view('camera.index', compact('cameras'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +39,7 @@ class CameraController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,53 +53,96 @@ class CameraController extends Controller
         }
         $cameras = Camera::create($datas);
         $cameras->categories()->attach($request->get('categories'));
-        $cameras->brands()->attach($request->get('brands'));
-        return redirect(route('camera.create'))->with('status','mantap');
+        return redirect(route('camera.create'))->with('status', 'mantap');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $camera = Camera::findOrFail($id);
-        return view('camera.show',compact('camera'));
+        return view('camera.show', compact('camera'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $camera = Camera::findOrFail($id);
+        return view('camera.edit', compact('camera'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $camera = Camera::findOrFail($id);
+        $data = $request->all();
+        $data['slug'] = $request->name;
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo')->store('cameras', 'public');
+            $data['photo'] = $file;
+            Storage::delete('public' . $camera->photo);
+        }
+        $camera->update($data);
+        $camera->categories()->sync($request->get('categories'));
+        return redirect(route('camera.edit', ['id' => $camera->id]))->with('status', 'mantul update');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $camera = Camera::findOrFail($id);
+        $camera->delete();
+        return redirect(route('camera.index'))->with('status', 'Camera moved to trash');
     }
+
+    public function trash()
+    {
+        $cameras = Camera::onlyTrashed()->paginate(5);
+        return view('camera.trash', compact('cameras'));
+    }
+
+    public function restore($id)
+    {
+        $camera = Camera::withTrashed()->findOrFail($id);
+        if ($camera->trashed()) {
+            $camera->restore();
+            return redirect(route('camera.trash'))->with('status', 'camera successfully restored');
+        } else {
+            return redirect(route('camera.trash'))->with('status', 'camera is not in trash');
+        }
+    }
+
+    public function deletePermanent($id)
+    {
+        $camera = Camera::withTrashed()->findOrFail($id);
+        if (!$camera->trashed()) {
+            return redirect(route('camera.trash'))->with('status', 'camera is not in trash ')->with('status_type', 'alert');
+        } else {
+            $camera->categories()->detach();
+            $camera->brands()->detach();
+            $camera->forceDelete();
+            return redirect(route('camera.trash'))->with('status', 'camera permanently deleted');
+        }
+    }
+
 }
