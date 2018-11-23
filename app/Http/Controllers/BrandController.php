@@ -16,6 +16,7 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         $brands = Brand::paginate(5);
@@ -44,6 +45,16 @@ class BrandController extends Controller
     {
         $camera = Camera::findOrFail($id);
         return view('item', compact('camera'));
+    }
+    public function catalog()
+    {
+
+        return 'asdf';
+    }
+
+    public function shopNow($id){
+        $camera = Camera::findOrFail($id);
+        return view('order', compact('camera'));
     }
 
     /**

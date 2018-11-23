@@ -57,13 +57,13 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->username}}</td>
                                 <td>
-                                    @if($user->role == "user")
+                                    @if($user->type == "user")
                                         <span class="badge badge-primary badge-pill">
-                                            {{$user->role}}
+                                            {{$user->type}}
                                         </span>
                                     @else
                                         <span class="badge badge-warning badge-pill">
-                                            {{$user->role}}
+                                            {{$user->type}}
                                         </span>
                                     @endif
                                 </td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Camera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class CameraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         $cameras = Camera::paginate(5);
@@ -143,6 +145,19 @@ class CameraController extends Controller
             $camera->forceDelete();
             return redirect(route('camera.trash'))->with('status', 'camera permanently deleted');
         }
+    }
+
+    public function showCatalog()
+    {
+        $brands = Brand::take(6)->get();
+        $camera = Camera::all();
+        return view('catalog', compact('brands', 'camera'));
+    }
+
+    public function showData($id)
+    {
+        $camera = Camera::findOrFail($id);
+        return view('item', compact('camera'));
     }
 
 }

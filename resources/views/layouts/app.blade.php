@@ -88,15 +88,17 @@
                 </div>
                 <div class="col-md-9">
                     <main class="py-4">
-                        @yield('content')
+                        @if (Auth::user()->type=='admin')
+                            @yield('content')
+
+                        @else
+
+                        @endif
                     </main>
                 </div>
             </div>
         </div>
     @else
-        <main class="py-4">
-            @yield('content')
-        </main>
     @endif
 </div>
 {{--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>--}}

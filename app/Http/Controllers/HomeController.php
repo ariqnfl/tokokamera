@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(function($request, $next){
+
+            if(Gate::allows('admin-ability')) return $next($request);
+
+            abort(403);
+        });
     }
 
     /**
@@ -22,9 +28,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexUser(){
-        return view('index');
-    }
     public function index()
     {
 //        if(Auth::user()->role=='admin')

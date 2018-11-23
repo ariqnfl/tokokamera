@@ -7,7 +7,7 @@
         <!--Shop By Categories-->
         <div class="shopby">
             <div class="row">
-                <a class="shopbyitem col-sm-6" href="catalog.html">
+                <a class="shopbyitem col-sm-6" href="{{route('catalog')}}">
                     <img class="padding-top-sm" style="width:100%;padding-left: 0px; padding-right: 0px;" alt="DSLR"
                          src="{{asset('image/shopby/DSLR_.jpg')}}">
                     <div class="tagshopby">
@@ -44,7 +44,7 @@
             </div>
             <div class="shopbybrand">
                 @foreach($brands as $brand)
-                    <a href="#">
+                    <a href="">
                         <img src="{{asset('storage/'.$brand->photo)}}" alt="{{$brand->name}}">
                     </a>
                 @endforeach

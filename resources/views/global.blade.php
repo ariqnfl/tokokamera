@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-free-5.5.0-web/css/all.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/sweetalert/dist/sweetalert.min.js')}}"></script>
+
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script>
         $(document).ready(function () {
+            @yield('tambah-script')
             $(".card").hover(
                 function () {
                     $(this).addClass('shadow').css('cursor', 'pointer');
@@ -30,7 +33,7 @@
     <div class="topbar navbar fixed-top">
         <!--Logo-->
         <div class="logo px-2 d-flex">
-            <a href="#">
+            <a href="/">
                 <img src="{{asset('image/camcamheader.png')}}" width="150" alt="CamCam">
             </a>
         </div>
@@ -39,7 +42,7 @@
             <nav class="navbar navbar-expand-sm bg-white">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html"><strong>HOME</strong></a>
+                        <a class="nav-link" href="/"><strong>HOME</strong></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><strong>CATEGORY</strong></a>
@@ -54,6 +57,9 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('catalog')}}"><strong>CATALOG</strong></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#"><strong>ABOUT US</strong></a>
                     </li>
 
@@ -62,7 +68,7 @@
         </div>
         <!--Search-->
         <div class="d-flex">
-            <form class="input-group" method="get"><span class="input-group-prepend">
+            <form class="input-group" method="get" action="{{route('')}}"><span class="input-group-prepend">
                         <button class="btn btn-outline-primary" type="submit"><i
                                     class="fas fa-search"></i></button></span>
                 <input class="form-control" type="search" placeholder="Search on CamCam...">
@@ -245,6 +251,7 @@
     </div>
 </div>
 @yield('content')
+@yield('script-bawah')
 <script src="{{asset('js/myjs.js')}}"></script>
 
 </body>

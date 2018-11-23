@@ -20,7 +20,7 @@
                             <p>{{$camera->desc}}</p>
                         </div>
                     </div>
-                    <a class=" btn btn-success" href="order.html">Beli Sekarang</a>
+                    <a class=" btn btn-success" href="{{route('shop',['id'=> $camera->id])}}">Beli Sekarang</a>
                     <button class="btn btn-primary">
                         Add to Cart
                     </button>

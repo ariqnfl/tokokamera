@@ -1,0 +1,113 @@
+@extends('global')
+@section('content')
+</div>
+<div class="spacefromhead"></div>
+<div class="container">
+    <div class="row">
+        <!--Input data pembeli-->
+        <div class="col-sm-8 p-2">
+            <div class="card w-100 pb-4">
+                <div class="card-header">
+                    <h5>Detail Pembeli</h5>
+                </div>
+                <div class="card-body">
+                    <div class="btn-group w-100">
+                        <a id="buy-no-reg" href="#" class="nav-order-card  w-50 btn btn-primary btn-sm active">BELI
+                            TANPA DAFTAR</a>
+                        <a id="buy-login" href="#" class="nav-order-card w-50 btn btn-primary btn-sm"> LOGIN</a>
+                    </div>
+                    <div class="form-without-login">
+                        <form action="" class="form-group">
+                            <label class="mt-2" for="Nama">Nama</label>
+                            <input type="text" class="form-control" id="Nama">
+                            <label class="mt-2" for="email">Email</label>
+                            <input type="text" class="form-control" id="email">
+                            <label class="mt-2" for="noTelp">No Telpon</label>
+                            <input type="text" class="form-control" id="noTelp">
+                            <label class="mt-2" for="alamat">Alamat</label>
+                            <textarea id="alamat" class="form-control" rows="5"></textarea>
+                        </form>
+                    </div>
+                    <div class="form-with-login">
+                        <form action="">
+                            <label class="mt-2" for="username">Username</label>
+                            <input type="text" class="form-control" id="username">
+                            <label class="mt-2" for="pwd">Password</label>
+                            <input type="password" class="form-control" id="pwd">
+                            <input class="btn btn-success p-2 my-2 w-25" type="button" value="Login">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card w-100 pb-4">
+                <div class="card-header">
+                    <h5>Detail Belanja</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row" id="item">
+                        <div class="row">
+                            <div class="col-4 image-item">
+                                <img class="img-thumbnail" src="{{asset('storage/'.$camera->photo)}}" alt="">
+                            </div>
+                            <div class="col-8">
+                                <h3>{{$camera->name}}</h3>
+                                <h5>{{$camera->brand}}</h5>
+                                <h5><strong>Rp.{{$camera->price}},00</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--Ringkasan belanja-->
+        <div class="col-sm-4 p-2 ">
+            <div class="card total-pembayaran sticky ">
+                <div class="card-header">
+                    <h5>Ringkasan Belanja</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6"><strong>TOTAL</strong></div>
+                        <div class="col-sm-6 text-right"><strong>Rp.{{$camera->price}}</strong></div>
+                    </div>
+                    <hr>
+                    <button class="btn btn-success w-100" id="success">Bayar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('script-bawah')
+    <script>
+        $(document).ready(function () {
+
+            $(".form-with-login").hide();
+
+            $("#buy-no-reg").click(function () {
+                $(".form-without-login").show();
+                $(".form-with-login").hide();
+                $(this).addClass("active");
+                $("#buy-login").removeClass("active")
+            });
+
+            $("#buy-login").click(function () {
+                $(".form-without-login").hide();
+                $(".form-with-login").show();
+                $(this).addClass("active");
+                $("#buy-no-reg").removeClass("active")
+            });
+            $("#success").click(function () {
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    button: "Aww yiss!",
+                });
+            });
+        });
+
+    </script>
+@endsection
