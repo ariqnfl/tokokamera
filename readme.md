@@ -7,6 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+# TUTORIAL
+- composer install
+- .env.example di rename jadi .env
+- sesuaikan database nama database berarti DB_DATABASE, dst di .env
+- php artisan key:generate
+- php artisan migrate --seed
+- default email dan password admin@gmail.com/admin123
+- php artisan storage:link
+- kalo udah semua php artisan serve
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
@@ -68,12 +78,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-# TUTORIAL
-- composer install
-- .env.example di rename jadi .env
-- sesuaikan database nama database berarti DB_DATABASE, dst di .env
-- php artisan key:generate
-- php artisan migrate --seed
-- default email dan password admin@gmail.com/admin123
-- php artisan storage:link
-- kalo udah semua php artisan serve
+
