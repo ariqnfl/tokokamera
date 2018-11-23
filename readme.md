@@ -70,7 +70,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 # TUTORIAL
 - composer install
-- .env.example di rename jadi .env terus jalanin command
+- .env.example di rename jadi .env
+- sesuaikan database nama database berarti DB_DATABASE, dst di .env
 - php artisan key:generate
 - php artisan migrate --seed
 - default email dan password admin@gmail.com/admin123
