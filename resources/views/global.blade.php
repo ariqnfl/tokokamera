@@ -71,10 +71,6 @@
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN |
                                 REGISTER</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><span
-                                        class="badge">2</span></a>
-                        </li>
                     </ul>
                 @else
                     <ul class="navbar-nav">
@@ -99,10 +95,6 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i><span
-                                        class="badge">2</span></a>
                         </li>
                     </ul>
 
