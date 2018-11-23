@@ -44,18 +44,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/"><strong>HOME</strong></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><strong>CATEGORY</strong></a>
-                        <div class="dropdown-menu">
-                            {{--@foreach($camera->categories as $category)--}}
-                            {{--<a class="dropdown-item" href="catalog.html">{{$category->name}}</a>--}}
-                            {{--@endforeach--}}
-
-                            <a class="dropdown-item" href="catalog.html">Mirrorless</a>
-                            <a class="dropdown-item" href="catalog.html">Compact</a>
-                            <a class="dropdown-item" href="catalog.html">Accessories</a>
-                        </div>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('catalog')}}"><strong>CATALOG</strong></a>
                     </li>
@@ -68,10 +56,9 @@
         </div>
         <!--Search-->
         <div class="d-flex">
-            <form class="input-group" method="get" action="{{route('')}}"><span class="input-group-prepend">
-                        <button class="btn btn-outline-primary" type="submit"><i
-                                    class="fas fa-search"></i></button></span>
-                <input class="form-control" type="search" placeholder="Search on CamCam...">
+            <form class="input-group" action="{{route('hasil')}}">
+                <input class="form-control" value="{{Request::get('name')}}" name="name" type="text" placeholder="Search on CamCam...">
+                <input type="submit" value="filter" class="btn btn-primary">
             </form>
         </div>
         <!--Navbar Login & Signup-->
@@ -99,6 +86,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->type == "admin")
+                                    <a class="dropdown-item" href="{{route('home')}}">Admin Panel</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

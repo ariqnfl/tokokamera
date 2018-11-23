@@ -23,6 +23,7 @@
             (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ?
                 'svg' : ' no-svg');
     </script>
+    <script src="{{asset('js/sweetalert/dist/sweetalert.min.js')}}"></script>
 </head>
 
 <body>

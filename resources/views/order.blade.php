@@ -1,6 +1,6 @@
 @extends('global')
+@section('title')CamCam | Order {{$camera->name}}@endsection
 @section('content')
-</div>
 <div class="spacefromhead"></div>
 <div class="container">
     <div class="row">
@@ -16,8 +16,17 @@
                             TANPA DAFTAR</a>
                         <a id="buy-login" href="#" class="nav-order-card w-50 btn btn-primary btn-sm"> LOGIN</a>
                     </div>
+                    <div class="form-with-login">
+                        <form action="">
+                            <label class="mt-2" for="username">Username</label>
+                            <input type="text" class="form-control" id="username">
+                            <label class="mt-2" for="pwd">Password</label>
+                            <input type="password" class="form-control" id="pwd">
+                            <input class="btn btn-success p-2 my-2 w-25" type="button" value="Login">
+                        </form>
+                    </div>
                     <div class="form-without-login">
-                        <form action="" class="form-group">
+                        <form id="form-no-login" action="" class="form-group">
                             <label class="mt-2" for="Nama">Nama</label>
                             <input type="text" class="form-control" id="Nama">
                             <label class="mt-2" for="email">Email</label>
@@ -28,15 +37,7 @@
                             <textarea id="alamat" class="form-control" rows="5"></textarea>
                         </form>
                     </div>
-                    <div class="form-with-login">
-                        <form action="">
-                            <label class="mt-2" for="username">Username</label>
-                            <input type="text" class="form-control" id="username">
-                            <label class="mt-2" for="pwd">Password</label>
-                            <input type="password" class="form-control" id="pwd">
-                            <input class="btn btn-success p-2 my-2 w-25" type="button" value="Login">
-                        </form>
-                    </div>
+
 
                 </div>
             </div>
@@ -46,16 +47,19 @@
                 </div>
                 <div class="card-body">
                     <div class="row" id="item">
-                        <div class="row">
-                            <div class="col-4 image-item">
-                                <img class="img-thumbnail" src="{{asset('storage/'.$camera->photo)}}" alt="">
+                            <div class="row">
+                                <div class="col-4 image-item">
+                                    <img src="{{asset('storage/'.$camera->photo)}}" class="img-thumbnail" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <h3>{{$camera->name }}</h3>
+                                    <h5>{{$camera->brands->name}}</h5>
+                                    @foreach($camera->categories as $category)
+                                        <h5>{{$category->name}}</h5>
+                                    @endforeach
+                                    <h5><strong>Rp. {{$camera->price}},00</strong></h5>
+                                </div>
                             </div>
-                            <div class="col-8">
-                                <h3>{{$camera->name}}</h3>
-                                <h5>{{$camera->brand}}</h5>
-                                <h5><strong>Rp.{{$camera->price}},00</strong></h5>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -70,10 +74,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6"><strong>TOTAL</strong></div>
-                        <div class="col-sm-6 text-right"><strong>Rp.{{$camera->price}}</strong></div>
+                        <div class="col-sm-6 text-right"><strong>Rp.27325182</strong></div>
                     </div>
                     <hr>
-                    <button class="btn btn-success w-100" id="success">Bayar</button>
+                    <input type="submit" class="btn btn-success w-100" value="Bayar" form="form-no-login">
                 </div>
             </div>
         </div>
@@ -101,10 +105,10 @@
             });
             $("#success").click(function () {
                 swal({
-                    title: "Good job!",
-                    text: "You clicked the button!",
+                    title: "Order Success!",
+                    text: "Thank You For Ordering!",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "OK",
                 });
             });
         });

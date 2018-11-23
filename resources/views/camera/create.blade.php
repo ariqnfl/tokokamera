@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Save">
+                        <input type="submit" class="btn btn-primary" value="Save" onclick="swal">
                     </div>
                 </form>
             </div>
@@ -80,6 +80,14 @@
             var fileName = e.target.files[0].name;
             $(this).next('.custom-file-label').html(fileName);
         })
+    </script>
+
+    <script>
+        swal(
+            'Category Created',
+            '{{session('status')}}',
+            'success'
+        )
     </script>
     <script>
         $('#categories').select2({

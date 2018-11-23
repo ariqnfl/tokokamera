@@ -21,9 +21,6 @@
                         </div>
                     </div>
                     <a class=" btn btn-success" href="{{route('shop',['id'=> $camera->id])}}">Beli Sekarang</a>
-                    <button class="btn btn-primary">
-                        Add to Cart
-                    </button>
                 </div>
             </div>
         </div>

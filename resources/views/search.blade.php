@@ -1,5 +1,5 @@
 @extends('global')
-@section('title')CamCam | Catalog
+@section('title')CamCam | Search
 @endsection
 @section('tambah-script')
     $("#filter-item-brand").hide();
@@ -11,7 +11,10 @@
 @endsection
 @section('content')
     <div class="spacefromhead"></div>
+
     <div class="container mt-5">
+
+        <h2>Search Results</h2>
         <div class="filter mb-5">
             <button type="button" class="btn btn-outline-primary btn-block btn-sm" data-toggle="modal"
                     data-target="#myModal">
@@ -65,16 +68,16 @@
             <div id="item" class="row">
                 @foreach($camera as $item)
                     <div class="card m-1" style="width: 23%">
-                    <a class="item-link" href="{{route('showdata',['id'=> $item->id])}}">
-                        <div class="product-card-body card-body">
-                            <h5 class="card-title truncate">{{$item->name}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$item->brands->name}}</h6>
-                            <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
-                            <h5 class="card-title">Rp. {{$item->price}}</h5>
-                            <a href="#" class="btn btn-outline-primary btn-sm w-100 text-center"><i
-                                        class="fas fa-cart-plus fa-2x"></i></a>
-                        </div>
-                    </a>
+                        <a class="item-link" href="{{route('showdata',['id'=> $item->id])}}">
+                            <div class="product-card-body card-body">
+                                <h5 class="card-title truncate">{{$item->name}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{$item->brands->name}}</h6>
+                                <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
+                                <h5 class="card-title">Rp. {{$item->price}}</h5>
+                                <a href="#" class="btn btn-outline-primary btn-sm w-100 text-center"><i
+                                            class="fas fa-cart-plus fa-2x"></i></a>
+                            </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

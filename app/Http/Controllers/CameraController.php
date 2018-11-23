@@ -27,6 +27,16 @@ class CameraController extends Controller
         return view('camera.index', compact('cameras'));
     }
 
+    public function searchResults(Request $request)
+    {
+        $camera = Camera::paginate(5);
+        $brands = Brand::take(6)->get();
+        $keyword = $request->get('name');
+        if ($keyword) {
+            $camera = Camera::where("name","LIKE","%$keyword%")->paginate(4);
+        }
+        return view('search',compact('camera','brands'));
+    }
 
     /**
      * Show the form for creating a new resource.

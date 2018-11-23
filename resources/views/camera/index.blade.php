@@ -2,14 +2,14 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h1>Brand</h1>
+            <h1>Product</h1>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
                     <form action="{{route('camera.index')}}">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Filter by Camera name"
+                            <input type="text" class="form-control" placeholder="Filter by Products name"
                                    value="{{Request::get('name')}}" name="name">
                             <div class="input-group-append">
                                 <input type="submit" value="Filter" class="btn btn-primary">

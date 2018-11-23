@@ -15,7 +15,7 @@
 Auth::routes();
 Route::get('/kategori', 'CameraController@showCatalog')->name('catalog');
 Route::get('/kategori/{id}','CameraController@showData')->name('showdata');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
 Route::delete('/category/{id}/delete', 'CategoryController@deletePermanent')->name('category.delete-permanent');
 Route::get('/category/trash', 'CategoryController@trash')->name('category.trash');
 Route::get('/category/{id}/restore', 'CategoryController@restore')->name('category.restore');
@@ -28,12 +28,11 @@ Route::resource('user', 'UserController');
 Route::delete('/camera/{id}/delete', 'CameraController@deletePermanent')->name('camera.delete-permanent');
 Route::get('/camera/trash', 'CameraController@trash')->name('camera.trash');
 Route::get('/camera/{id}/restore', 'CameraController@restore')->name('camera.restore');
+Route::get('/search','CameraController@searchResults')->name('hasil');
 Route::resource('camera', 'CameraController');
 Route::get('/ajax/categories/search', 'CategoryController@ajaxSearch')->name('ajax.search');
 Route::get('/ajax/brands/search', 'BrandController@ajaxSearch')->name('ajax-brand.search');
 Route::get('/', 'BrandController@nampilinGambar');
 Route::get('/{id}', 'BrandController@showGambar')->name('gambar');
 Route::get('/shop/{id}', 'BrandController@shopNow')->name('shop');
-//Route::get('/','BrandController@categoryShow');
-Route::get('/admin', 'AdminController@admin')
-    ->middleware('is_admin')->name('admin');
+Route::resource('order','OrderController');
