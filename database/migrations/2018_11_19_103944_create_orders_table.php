@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->enum('status',['cancel','process','delivered']);
             $table->string('name')->nullable();
             $table->string('address')->nullable();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

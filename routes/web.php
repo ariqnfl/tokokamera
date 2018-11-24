@@ -15,6 +15,7 @@
 Auth::routes();
 Route::get('/kategori', 'CameraController@showCatalog')->name('catalog');
 Route::get('/kategori/{id}','CameraController@showData')->name('showdata');
+Route::resource('order','OrderController');
 Route::get('/admin', 'HomeController@index')->name('home');
 Route::delete('/category/{id}/delete', 'CategoryController@deletePermanent')->name('category.delete-permanent');
 Route::get('/category/trash', 'CategoryController@trash')->name('category.trash');
@@ -32,7 +33,6 @@ Route::get('/search','CameraController@searchResults')->name('hasil');
 Route::resource('camera', 'CameraController');
 Route::get('/ajax/categories/search', 'CategoryController@ajaxSearch')->name('ajax.search');
 Route::get('/ajax/brands/search', 'BrandController@ajaxSearch')->name('ajax-brand.search');
-Route::get('/', 'BrandController@nampilinGambar');
+Route::get('/', 'BrandController@nampilinGambar')->name('depan');
 Route::get('/{id}', 'BrandController@showGambar')->name('gambar');
 Route::get('/shop/{id}', 'BrandController@shopNow')->name('shop');
-Route::resource('order','OrderController');

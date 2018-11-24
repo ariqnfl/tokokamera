@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -24,4 +25,7 @@ class Order extends Model
         }
         return $total_qty;
     }
+    protected $fillable = [
+      'user_id','totalPrice','name','address','phone','status'
+    ];
 }

@@ -9,7 +9,7 @@
             <a class="nav-link" href="{{route('category.index')}}">Category</a>
             <a class="nav-link" href="{{route('brand.index')}}">Brand</a>
             <a class="nav-link" href="{{route('camera.index')}}">Product</a>
-            <a class="nav-link" href="">Orders</a>
+            <a class="nav-link" href="{{route('order.index')}}">Orders</a>
         </nav>
     </div>
 </div>
