@@ -37,6 +37,7 @@
                                 <label class="mt-2" for="alamat">Alamat</label>
                                 <textarea id="alamat" class="form-control" rows="5" name="address"></textarea>
                                 <input type="hidden" value="{{$camera->price}}" name="totalPrice">
+                                <input type="hidden" value=1 name="stockminus">
                             </form>
                         </div>
 

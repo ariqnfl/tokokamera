@@ -65,7 +65,7 @@
                         <div class="col-sm-6 text-right"><strong>Rp.27325182</strong></div>
                     </div>
                     <hr>
-                    <input type="submit" class="btn btn-success w-100" value="Bayar" form="form-bayar"
+                    <input type="submit" class="btn btn-success w-100" value="Bayar" form="form-bayar">
                 </div>
             </div>
         </div>

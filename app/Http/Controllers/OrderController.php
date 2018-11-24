@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Camera;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,9 +42,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $a = $request->get('stockminus');
         $datas = $request->all();
         if (Auth::user()){
-
             $datas['user_id'] = Auth::user()->id;
         }else{
             $datas['user_id'] = null;
@@ -72,7 +73,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('order.edit',compact('order'));
     }
 
     /**
@@ -84,7 +86,10 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $datas = $request->all();
+        $order->update($datas);
+        return redirect(route('order.edit',compact('id')))->with('status','Order Successfully Edited');
     }
 
     /**
