@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Camera;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -161,14 +162,22 @@ class CameraController extends Controller
     {
         if (request()->brand) {
             $camera = Camera::with('brands')->whereHas('brands', function ($querry) {
-                $querry->where('brand_id',"=", request()->brand);
+                $querry->where('brand_id', "=", request()->brand);
             })->get();
-            $brands = Brand::all();
-        } else {
+            $brands = Brand::take(6)->get();
+            $categories = Category::all();
+        }elseif (request()->category){
+            $camera = Camera::with('categories')->whereHas('categories', function ($querry) {
+                $querry->where('category_id', request()->category);
+            })->get();
+            $categories = Category::all();
+            $brands = Brand::take(6)->get();
+        }else{
             $brands = Brand::take(6)->get();
             $camera = Camera::all();
+            $categories = Category::all();
         }
-        return view('catalog', compact('brands', 'camera'));
+        return view('catalog', compact('brands', 'camera', 'categories'));
     }
 
     public function showData($id)

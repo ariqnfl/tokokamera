@@ -46,11 +46,6 @@ class BrandController extends Controller
         $camera = Camera::findOrFail($id);
         return view('item', compact('camera'));
     }
-    public function catalog()
-    {
-
-        return 'asdf';
-    }
 
     public function shopNow($id){
         $camera = Camera::findOrFail($id);

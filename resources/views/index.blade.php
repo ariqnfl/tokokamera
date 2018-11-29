@@ -7,14 +7,14 @@
         <!--Shop By Categories-->
         <div class="shopby">
             <div class="row">
-                <a class="shopbyitem col-sm-6" href="{{route('catalog')}}">
+                <a class="shopbyitem col-sm-6" href="/kategori?category=2">
                     <img class="padding-top-sm" style="width:100%;padding-left: 0px; padding-right: 0px;" alt="DSLR"
                          src="{{asset('image/shopby/DSLR_.jpg')}}">
                     <div class="tagshopby">
                         <h5>SHOP DSLR CAMERA</h5>
                     </div>
                 </a>
-                <a class="shopbyitem col-sm-6" href="catalog.html">
+                <a class="shopbyitem col-sm-6" href="kategori?category=3">
                     <img class="padding-top-sm" style="width:100%;padding-left: 0px; padding-right: 0px;" alt="DSLR"
                          src="{{asset('image/shopby/Mirrorless_.jpg')}}">
                     <div class="tagshopby">
@@ -23,14 +23,14 @@
                 </a>
             </div>
             <div class="row">
-                <a class="shopbyitem col-sm-6" href="catalog.html">
+                <a class="shopbyitem col-sm-6" href="kategori?category=5">
                     <img class="padding-top-sm" style="width:100%;padding-left: 0px; padding-right: 0px;" alt="DSLR"
                          src="{{asset('image/shopby/Compact_.jpg')}}">
                     <div class="tagshopby">
                         <h5>SHOP COMPACT CAMERA</h5>
                     </div>
                 </a>
-                <a class="shopbyitem col-sm-6" href="catalog.html">
+                <a class="shopbyitem col-sm-6" href="kategori?category=4">
                     <img class="padding-top-sm" style="width:100%;padding-left: 0px; padding-right: 0px;" alt="DSLR"
                          src="{{asset('image/shopby/Accessories_.jpg')}}">
                     <div class="tagshopby">
