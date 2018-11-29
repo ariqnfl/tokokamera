@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="icon" href="{{asset('image/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-free-5.5.0-web/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-free-5.5.0-web/js/all.js')}}">
     <script src="{{asset('js/app.js')}}"></script>
@@ -84,6 +85,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="" class="dropdown-item">Settings</a>
+                                <a href="" class="dropdown-item">Order Details</a>
                                 @if(Auth::user()->type == "admin")
                                     <a class="dropdown-item" href="{{route('home')}}">Admin Panel</a>
                                 @endif
