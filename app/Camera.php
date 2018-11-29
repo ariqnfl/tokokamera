@@ -9,6 +9,11 @@ class Camera extends Model
 {
     use SoftDeletes;
 
+    public function wishlist()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
     public function categories()
     {
         return $this->belongsToMany('App\Category');
@@ -16,7 +21,7 @@ class Camera extends Model
 
     public function brands()
     {
-        return $this->belongsTo('App\Brand','brand_id','id');
+        return $this->belongsTo('App\Brand', 'brand_id', 'id');
     }
 
     public function orders()
@@ -25,11 +30,11 @@ class Camera extends Model
     }
 
     protected $fillable = [
-        'name','stock','price','slug','photo','desc','created_by','brand_id'
+        'name', 'stock', 'price', 'slug', 'photo', 'desc', 'created_by', 'brand_id'
     ];
 
     public function setSlug($value)
     {
-        $this->attributes['slug'] = str_slug($value,'-');
+        $this->attributes['slug'] = str_slug($value, '-');
     }
 }

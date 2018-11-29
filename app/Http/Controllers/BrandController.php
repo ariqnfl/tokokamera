@@ -31,7 +31,7 @@ class BrandController extends Controller
     {
 
         $brands = Brand::take(6)->get();
-        $camera = Camera::take(5)->get();
+        $camera = Camera::take(8)->get();
         return view('index', compact('brands', 'camera'));
     }
 //
@@ -78,8 +78,9 @@ class BrandController extends Controller
         $datas = $request->all();
         $datas['created_by'] = Auth::user()->id;
         if ($request->file('photo')) {
-            $file = Storage::disk('public')->put('brands', $request->photo);
-            $datas['photo'] = $file;
+            foreach ($request->file('photo')as $files)
+            $files = Storage::disk('public')->put('brands', $request->photo);
+            $datas['photo'] = $files;
         }
         Brand::create($datas);
         return redirect()->route('brand.create')->with('status', 'Brand Successfully created');

@@ -37,27 +37,31 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $a = $request->get('stockminus');
+        $camera = Camera::findOrFail($request['camera_id']);
+        $stock = ($camera->stock - $a);
         $datas = $request->all();
-        if (Auth::user()){
+        if (Auth::user()) {
             $datas['user_id'] = Auth::user()->id;
-        }else{
+        } else {
             $datas['user_id'] = null;
         }
         $datas['status'] = "process";
         Order::create($datas);
+        $camera->update(['stock' => $stock]);
         return redirect(route('depan'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -68,20 +72,20 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-        return view('order.edit',compact('order'));
+        return view('order.edit', compact('order'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -89,13 +93,13 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $datas = $request->all();
         $order->update($datas);
-        return redirect(route('order.edit',compact('id')))->with('status','Order Successfully Edited');
+        return redirect(route('order.edit', compact('id')))->with('status', 'Order Successfully Edited');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

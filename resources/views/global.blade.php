@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('fonts/fontawesome-free-5.5.0-web/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('fonts/fontawesome-free-5.5.0-web/js/all.js')}}">
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/sweetalert/dist/sweetalert.min.js')}}"></script>
 
@@ -82,6 +83,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="" class="dropdown-item">Settings</a>
                                 @if(Auth::user()->type == "admin")
                                     <a class="dropdown-item" href="{{route('home')}}">Admin Panel</a>
                                 @endif
@@ -234,6 +236,7 @@
 </div>
 @yield('content')
 @yield('script-bawah')
+@stack('js')
 <script src="{{asset('js/myjs.js')}}"></script>
 
 </body>

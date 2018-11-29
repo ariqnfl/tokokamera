@@ -37,6 +37,7 @@
                                 <label class="mt-2" for="alamat">Alamat</label>
                                 <textarea id="alamat" class="form-control" rows="5" name="address"></textarea>
                                 <input type="hidden" value="{{$camera->price}}" name="totalPrice">
+                                <input type="hidden" name="camera_id" value="{{ $camera->id }}">
                                 <input type="hidden" value=1 name="stockminus">
                             </form>
                         </div>
@@ -60,7 +61,7 @@
                                     @foreach($camera->categories as $category)
                                         <h5>{{$category->name}}</h5>
                                     @endforeach
-                                    <h5><strong>Rp. {{$camera->price}},00</strong></h5>
+                                    <h5><strong>Rp. {{number_format($camera->price)}}</strong></h5>
                                 </div>
                             </div>
                         </div>
@@ -77,11 +78,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6"><strong>TOTAL</strong></div>
-                            <div class="col-sm-6 text-right"><strong>Rp.{{$camera->price}}</strong></div>
+                            <div class="col-sm-6 text-right"><strong>Rp.{{number_format($camera->price)}}</strong></div>
                         </div>
                         <hr>
                         <input type="submit" class="btn btn-success w-100" value="Bayar" form="form-no-login"
-                               onclick="success()">
+                               onclick="klik()">
                     </div>
                 </div>
             </div>
@@ -107,15 +108,16 @@
                 $(this).addClass("active");
                 $("#buy-no-reg").removeClass("active")
             });
-            $("#success").click(function () {
-                swal({
-                    title: "Order Success!",
-                    text: "Thank You For Ordering!",
-                    icon: "success",
-                    button: "OK",
-                });
-            });
         });
+
+        function klik() {
+            swal({
+                title: "Order Success!",
+                text: "Thank You For Ordering!",
+                icon: "success",
+                button: "OK",
+            });
+        }
 
     </script>
 @endsection

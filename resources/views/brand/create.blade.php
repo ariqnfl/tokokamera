@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="">Brand Logo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile02">
+                            <input type="file" multiple class="custom-file-input" id="inputGroupFile02">
                             <label class="custom-file-label" for="inputGroupFile02"
                                    aria-describedby="inputGroupFileAddon02">Choose file</label>
                         </div>

@@ -28,7 +28,7 @@
 
                         @endif
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile02" name="photo">
+                            <input type="file" multiple class="custom-file-input" id="inputGroupFile02" name="photo">
                             <label class="custom-file-label" for="inputGroupFile02"
                                    aria-describedby="inputGroupFileAddon02">Choose file</label>
                         </div>

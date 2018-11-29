@@ -30,8 +30,8 @@
                                 <div class="card-body" id="filter-item-brand">
                                     <div class="filter-shopbybrand">
                                         @foreach($brands as $brand)
-                                            <a href="{{route('catalog')}}">
-                                                <img src="{{asset('storage/'.$brand->photo)}}" alt="SONY">
+                                            <a href="{{route('catalog',['brand' => $brand->id])}}">
+                                                <img src="{{asset('storage/'.$brand->photo)}}" alt="{{$brand->name}}">
                                             </a>
                                         @endforeach
                                     </div>
@@ -70,7 +70,7 @@
                             <h5 class="card-title truncate">{{$item->name}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{$item->brands->name}}</h6>
                             <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
-                            <h5 class="card-title">Rp. {{$item->price}}</h5>
+                            <h5 class="card-title">Rp. {{number_format($item->price)}}</h5>
                             <a href="#" class="btn btn-outline-primary btn-sm w-100 text-center"><i
                                         class="fas fa-cart-plus fa-2x"></i></a>
                         </div>

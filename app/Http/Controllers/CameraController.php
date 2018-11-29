@@ -33,9 +33,9 @@ class CameraController extends Controller
         $brands = Brand::take(6)->get();
         $keyword = $request->get('name');
         if ($keyword) {
-            $camera = Camera::where("name","LIKE","%$keyword%")->paginate(4);
+            $camera = Camera::where("name", "LIKE", "%$keyword%")->paginate(4);
         }
-        return view('search',compact('camera','brands'));
+        return view('search', compact('camera', 'brands'));
     }
 
     /**
@@ -159,8 +159,15 @@ class CameraController extends Controller
 
     public function showCatalog()
     {
-        $brands = Brand::take(6)->get();
-        $camera = Camera::all();
+        if (request()->brand) {
+            $camera = Camera::with('brands')->whereHas('brands', function ($querry) {
+                $querry->where('brand_id',"=", request()->brand);
+            })->get();
+            $brands = Brand::all();
+        } else {
+            $brands = Brand::take(6)->get();
+            $camera = Camera::all();
+        }
         return view('catalog', compact('brands', 'camera'));
     }
 
