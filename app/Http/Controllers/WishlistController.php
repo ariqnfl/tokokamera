@@ -24,11 +24,6 @@ class WishlistController extends Controller
         return view('wishlist', compact('user', 'wishlists'));
     }
 
-    public function aboutUs()
-    {
-        return view('aboutus');
-    }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -60,8 +60,7 @@
                     <a class="item-link" href="#">
                         <div class="product-card-body card-body">
                             <h5 class="card-title truncate">{{$item->name}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$item->brand}}</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$item->category}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$item->brands->name}}</h6>
                             <a href="{{route('gambar',['id'=> $item->id])}}">
                                 <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
                             </a>

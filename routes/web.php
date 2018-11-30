@@ -13,7 +13,9 @@
 
 
 Auth::routes();
-Route::get('/about','WishlistController@aboutUs')->name('about');
+Route::get('/about',function (){
+    return view('aboutus');
+})->name('about');
 Route::get('/orderdetails','OrderController@menampilkanSemuaOrder')->name('showOrder');
 Route::get('wish','WishlistController@buatwishlist')->name('mywish');
 Route::resource('wishlist','WishlistController',['except' => ['create','edit','show','update']]);
