@@ -58,11 +58,13 @@
             <div id="item" class="row">
                 @foreach($camera as $item)
                     <div class="card m-1" style="width: 23%">
-                        <a class="item-link" href="{{route('showdata',['id'=> $item->id])}}">
+                        <a class="item-link" href="#">
                             <div class="product-card-body card-body">
                                 <h5 class="card-title truncate">{{$item->name}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$item->brands->name}}</h6>
-                                <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
+                                <a href="{{route('showdata',['id'=> $item->id])}}">
+                                    <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
+                                </a>
                                 <h5 class="card-title">Rp. {{number_format($item->price)}}</h5>
                             </div>
                         </a>
