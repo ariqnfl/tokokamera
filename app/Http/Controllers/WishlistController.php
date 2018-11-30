@@ -19,9 +19,14 @@ class WishlistController extends Controller
 
     public function index()
     {
-//        $user = Auth::user();
-//        $wishlists = Wishlist::where("user_id","=",$user->id)->paginate(10);
-//        return view('wishlist',compact('user','wishlists'));
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $wishlists = Wishlist::where("user_id", "=", $user->id)->paginate(10);
+        return view('wishlist', compact('user', 'wishlists'));
+    }
+
+    public function aboutUs()
+    {
+        return view('aboutus');
     }
 
     /**
@@ -33,7 +38,7 @@ class WishlistController extends Controller
     {
         $wishlist = new Wishlist();
         $wishlist->user_id = \request()->id;
-        $wishlist->camera_id =\request()->camera;
+        $wishlist->camera_id = \request()->camera;
         $wishlist->save();
         return redirect()->back();
 
@@ -97,6 +102,8 @@ class WishlistController extends Controller
      */
     public function destroy($id)
     {
-
+        $wishlist = Wishlist::findOrFail($id);
+        $wishlist->delete();
+        return redirect(route('wishlist.index'));
     }
 }

@@ -14,7 +14,7 @@ class Order extends Model
 
     public function cameras()
     {
-        return $this->belongsToMany('App\Camera')->withPivot('qty');
+        return $this->belongsToMany('App\Camera');
     }
 
     public function getTotalQtyAttribute()

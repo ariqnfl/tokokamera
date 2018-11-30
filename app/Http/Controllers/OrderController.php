@@ -23,6 +23,14 @@ class OrderController extends Controller
         }
         return view('order.index', compact('orders'));
     }
+    public function menampilkanSemuaOrder()
+    {
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $orders = Order::where("user_id", "=", $user->id)->paginate(10);
+
+//        return $orders[1]->cameras[0]->name;
+        return view('orderdetails',compact('user','orders'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +61,8 @@ class OrderController extends Controller
             $datas['user_id'] = null;
         }
         $datas['status'] = "process";
-        Order::create($datas);
+        $orders = Order::create($datas);
+        $orders->cameras()->attach($request['camera_id']);
         $camera->update(['stock' => $stock]);
         return redirect(route('depan'));
     }

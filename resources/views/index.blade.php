@@ -66,8 +66,6 @@
                                 <img class="card-img" src="{{asset('storage/'.$item->photo)}}" alt="">
                             </a>
                             <h5 class="card-title">Rp. {{number_format($item->price)}}</h5>
-                            <a href="" class="btn btn-outline-primary btn-sm w-100 text-center"><i
-                                        class="fas fa-cart-plus fa-2x"></i></a>
                         </div>
                     </a>
                 </div>

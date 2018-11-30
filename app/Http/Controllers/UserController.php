@@ -15,12 +15,12 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-
-            if (Gate::allows('admin-ability')) return $next($request);
-
-            abort(403);
-        });
+//        $this->middleware(function ($request, $next) {
+//
+//            if (Gate::allows('admin-ability')) return $next($request);
+//
+//            abort(403);
+//        });
     }
 
     public function index(Request $request)
@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('editprofile');
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

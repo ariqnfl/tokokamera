@@ -50,7 +50,7 @@
                         <a class="nav-link" href="{{route('catalog')}}"><strong>CATALOG</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><strong>ABOUT US</strong></a>
+                        <a class="nav-link" href="{{route('about')}}"><strong>ABOUT US</strong></a>
                     </li>
 
                 </ul>
@@ -59,9 +59,16 @@
         <!--Search-->
         <div class="d-flex">
             <form class="input-group" action="{{route('hasil')}}">
-                <input class="form-control" value="{{Request::get('name')}}" name="name" type="text" placeholder="Search on CamCam...">
-                <input type="submit" value="filter" class="btn btn-primary">
+                <span class="input-group-prepend">
+                    <button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button>
+                </span>
+                <input class="form-control" value="{{Request::get('name')}}" type="text" name="name" placeholder="Search on CamCam...">
             </form>
+            {{--<form class="input-group" action="{{route('hasil')}}">--}}
+                {{--<input class="form-control" value="{{Request::get('name')}}" name="name" type="text"--}}
+                       {{--placeholder="Search on CamCam...">--}}
+                {{--<button type="submit" class="btn btn-primary btn-sm"><span class="fas fa-search"></span></button>--}}
+            {{--</form>--}}
         </div>
         <!--Navbar Login & Signup-->
         <div class="d-flex">
@@ -72,6 +79,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN |
                                 REGISTER</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="login()">Wishlist <span><i
+                                            class="fas fa-heart"></i></span></a>
                         </li>
                     </ul>
                 @else
@@ -84,8 +96,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="" class="dropdown-item">Settings</a>
-                                <a href="" class="dropdown-item">Order Details</a>
+                                <a href="{{route('user.edit',['id'=>\Illuminate\Support\Facades\Auth::user()->id])}}"
+                                   class="dropdown-item">Settings</a>
+                                <a href="{{route('showOrder')}}" class="dropdown-item">Order Details</a>
                                 @if(Auth::user()->type == "admin")
                                     <a class="dropdown-item" href="{{route('home')}}">Admin Panel</a>
                                 @endif
@@ -99,6 +112,11 @@
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('wishlist.index')}}">Wishlist <span><i
+                                            class="fas fa-heart"></i></span></a>
                         </li>
                     </ul>
 
@@ -237,10 +255,63 @@
     </div>
 </div>
 @yield('content')
+{{--<footer class="footer font-small pt-4" style="background-color: #F0F8FF">--}}
+    {{--<div class="container text-center text-md-left">--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-4">--}}
+                {{--<h3>Links</h3>--}}
+                {{--<hr>--}}
+                {{--<div class="list-group">--}}
+                    {{--<a href="/" class="list-group-item list-group-item-action">Home</a>--}}
+                    {{--<a href="{{route('catalog')}}" class="list-group-item list-group-item-action">Catalog</a>--}}
+                    {{--<a href="{{route('about')}}" class="list-group-item list-group-item-action">About Us</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-2"></div>--}}
+            {{--<div class="isi-footer col-md-6 mt-md-0 mt-3 text-right">--}}
+                {{--<h5 class="text-uppercase"><img src="{{asset('image/Logo.png')}}" alt="" style="width: 50px;"> CamCam.--}}
+                {{--</h5>--}}
+                {{--<p>Here our website that made with much of our love. <i class="fas fa-heart"></i></p>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="footer-copyright text-center py-3">© 2018 Copyright:--}}
+        {{--<a href="#"> CamCam.com</a>--}}
+    {{--</div>--}}
+{{--</footer>--}}
+<footer class="bg-dark text-white mt-5 " id="footer">
+    <div class="container pt-3 pb-3 pt-md-5 pb-md-5">
+        <div class="row mb-2">
+            <div class="col-md-6 mr-auto">
+                <h2 class="brand-budayaku brand-lg"><img src="{{asset('image/Logo.png')}}" alt="" style="width: 70px"> | CamCam</h2>
+                <p class="mt-2">You Can Find Any Camera With Us!</p>
+            </div>
+            <div class="col-md-3">
+                <h3 class="heading-footer">Learn More</h3>
+                <li class="learn-more"><a href="{{route('about')}}">Apa itu CamCam?</a></li>
+                <li class="learn-more"><a href="{{route('catalog')}}">Katalog</a></li>
+                <li class="learn-more"><a href="#">Syarat dan Ketentuan</a></li>
+                <li class="learn-more"><a href="#">Kebijakan Privasi</a></li>
+            </div>
+            <div class="col-md-3">
+                <h3 class="heading-footer">Stay Connect!</h3>
+                <div class="sosmed-button mb-3 mt-3">
+                    <a href="#"><span class="social-footer fab fa-facebook"></span></a>
+                    <a href="#"><span class="social-footer fab fa-twitter"></span></a>
+                    <a href="#"><span class="social-footer fab fa-instagram"></span></a>
+                    <a href="#"><span class="social-footer fab fa-twitch"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 @yield('script-bawah')
 @stack('js')
 <script src="{{asset('js/myjs.js')}}"></script>
-
+<script>
+    function login() {
+        $('#loginModal').modal('show');
+    };
+</script>
 </body>
-
 </html>

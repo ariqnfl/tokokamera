@@ -28,17 +28,31 @@
                         <div class="form-without-login">
                             <form id="form-no-login" action="{{route('order.store')}}" class="form-group" method="post">
                                 @csrf
-                                <label class="mt-2" for="Nama">Nama</label>
-                                <input type="text" class="form-control" id="Nama" name="name">
-                                <label class="mt-2" for="email">Email</label>
-                                <input type="text" class="form-control" id="email">
-                                <label class="mt-2" for="noTelp">No Telpon</label>
-                                <input type="text" class="form-control" id="noTelp" name="phone">
-                                <label class="mt-2" for="alamat">Alamat</label>
-                                <textarea id="alamat" class="form-control" rows="5" name="address"></textarea>
-                                <input type="hidden" value="{{$camera->price}}" name="totalPrice">
-                                <input type="hidden" name="camera_id" value="{{ $camera->id }}">
-                                <input type="hidden" value=1 name="stockminus">
+                                @if(Auth::check())
+                                    <label class="mt-2" for="Nama">Nama</label>
+                                    <input type="text" class="form-control" id="Nama" name="name" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
+                                    <label class="mt-2" for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" value="{{\Illuminate\Support\Facades\Auth::user()->email}}">
+                                    <label class="mt-2" for="noTelp">No Telpon</label>
+                                    <input type="text" class="form-control" id="noTelp" name="phone">
+                                    <label class="mt-2" for="alamat">Alamat</label>
+                                    <textarea id="alamat" class="form-control" rows="5" name="address"></textarea>
+                                    <input type="hidden" value="{{$camera->price}}" name="totalPrice">
+                                    <input type="hidden" name="camera_id" value="{{ $camera->id }}">
+                                    <input type="hidden" value=1 name="stockminus">
+                                @else
+                                    <label class="mt-2" for="Nama">Nama</label>
+                                    <input type="text" class="form-control" id="Nama" name="name">
+                                    <label class="mt-2" for="email">Email</label>
+                                    <input type="text" class="form-control" id="email">
+                                    <label class="mt-2" for="noTelp">No Telpon</label>
+                                    <input type="text" class="form-control" id="noTelp" name="phone">
+                                    <label class="mt-2" for="alamat">Alamat</label>
+                                    <textarea id="alamat" class="form-control" rows="5" name="address"></textarea>
+                                    <input type="hidden" value="{{$camera->price}}" name="totalPrice">
+                                    <input type="hidden" name="camera_id" value="{{ $camera->id }} ">
+                                    <input type="hidden" value=1 name="stockminus">
+                                @endif
                             </form>
                         </div>
 

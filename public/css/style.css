@@ -103,3 +103,27 @@ div .sticky {
 .filter-shopbybrand a{
     color: #000000;
 }
+.learn-more {
+    list-style: none;
+    line-height: 30px;
+}
+.heading-footer {
+    font-family: "Lobster";
+}
+
+.social-footer {
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+.sosmed-button a {
+    color: #fff;
+}
+
+.sosmed-button a:hover {
+    color: #0069d9;
+}
+.brand-budayaku {
+    font-family: "Lobster";
+    font-size: 1.6rem;
+}
