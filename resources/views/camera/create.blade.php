@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Save" onclick="swal">
+                        <input type="submit" class="btn btn-primary" value="Save" onclick="f()">
                     </div>
                 </form>
             </div>
@@ -83,11 +83,13 @@
     </script>
 
     <script>
-        swal(
-            'Category Created',
-            '{{session('status')}}',
-            'success'
-        )
+        function f(){
+            swal(
+                'Category Created',
+                '{{session('status')}}',
+                'success'
+            )
+        }
     </script>
     <script>
         $('#categories').select2({

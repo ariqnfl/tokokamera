@@ -7,9 +7,6 @@
         </div>
         <div class="card-body">
             @if(session('status'))
-                <div class="alert alert-success">
-                    {{session('status')}}
-                </div>
             @endif
             <form enctype="multipart/form-data" method="POST" action="{{route('camera.update',['id' => $camera->id])}}">
                 @csrf
@@ -71,13 +68,19 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" value="PUBLISH">Update</button>
+                <button class="btn btn-primary" value="PUBLISH" onclick="n()">Update</button>
             </form>
         </div>
     </div>
 @endsection
 @section('footer-script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        function n() {
+            swal("Success!", "{{session('status')}}", "success");
+        }
+
+    </script>
     <script>
         $('#inputGroupFile02').on('change', function (e) {
             var fileName = e.target.files[0].name;

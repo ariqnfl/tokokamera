@@ -66,7 +66,7 @@ class CameraController extends Controller
         }
         $cameras = Camera::create($datas);
         $cameras->categories()->attach($request->get('categories'));
-        return redirect(route('camera.create'))->with('status', 'mantap');
+        return redirect(route('camera.create'))->with('status', 'Camera Added');
     }
 
     /**
@@ -112,7 +112,7 @@ class CameraController extends Controller
         }
         $camera->update($data);
         $camera->categories()->sync($request->get('categories'));
-        return redirect(route('camera.edit', ['id' => $camera->id]))->with('status', 'mantul update');
+        return redirect(route('camera.edit', ['id' => $camera->id]))->with('status', 'Camera Updated');
     }
 
     /**

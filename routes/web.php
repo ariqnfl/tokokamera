@@ -19,9 +19,6 @@ Route::get('/about',function (){
 Route::get('/orderdetails','OrderController@menampilkanSemuaOrder')->name('showOrder');
 Route::get('wish','WishlistController@buatwishlist')->name('mywish');
 Route::resource('wishlist','WishlistController',['except' => ['create','edit','show','update']]);
-Route::get('upload','ImageshowController@index');
-Route::post('upload','ImageshowController@store');
-Route::get('images','ImageshowController@view');
 Route::get('/kategori', 'CameraController@showCatalog')->name('catalog');
 Route::get('/kategori/{id}','CameraController@showData')->name('showdata');
 Route::resource('order','OrderController');

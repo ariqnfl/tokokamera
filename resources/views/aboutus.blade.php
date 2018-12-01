@@ -27,6 +27,72 @@
             <div class="col-md-2">
                 <img class="w-100" src="{{asset('image/Logo.png')}}" alt="">
             </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-4 mb-4 ">
+                    <div class="card h-100 text-center">
+                        <img class="card-img-top" src="{{asset('image/IMG_1544.jpg')}}" alt="" height="350px" width="150x">
+                        <div class="card-body">
+                            <h4 class="card-title">Muhammad Ariq Naufal</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Back-End Dev</h6>
+                            <p class="card-text">S1 Sistem Informasi - Telkom University</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://mail.google.com/">nflariq17@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 ">
+                    <div class="card h-100 text-center">
+                        <img class="card-img-top" src="{{asset('image/banna.jpg')}}" alt="" height="350px" width="150x">
+                        <div class="card-body">
+                            <h4 class="card-title">Ahmad Al-Banna</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">Front-End Dev</h6>
+                            <p class="card-text">S1 Sistem Informasi - Telkom University</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://mail.google.com/">ahmed.albanna98@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-4 mb-4 ">
+                    <div class="card h-100 text-center">
+                        <img class="card-img-top" src="{{asset('image/tisa.jpg')}}" alt="" height="350px" width="150x">
+                        <div class="card-body">
+                            <h4 class="card-title">Anastisya Dratina</h4>
+                            <p class="card-text">S1 Sistem Informasi - Telkom University</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://mail.google.com/">anastisya@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 ">
+                    <div class="card h-100 text-center">
+                        <img class="card-img-top" src="{{asset('image/1.jpg')}}" alt="" height="350px" width="150x">
+                        <div class="card-body">
+                            <h4 class="card-title">Rosalia Endri Sintia</h4>
+                            <p class="card-text">S1 Sistem Informasi - Telkom University</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://mail.google.com/">rosaliaens@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 ">
+                    <div class="card h-100 text-center">
+                        <img class="card-img-top" src="{{asset('image/kesya.jpg')}}" alt="" height="350px" width="150x">
+                        <div class="card-body">
+                            <h4 class="card-title">Kesya Asih Zarinisa</h4>
+                            <p class="card-text">S1 Sistem Informasi - Telkom University</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://mail.google.com/">kesyaaz@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
